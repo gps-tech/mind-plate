@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
+import Check from "./components/Check";
 import Input from "./components/Input";
+import Output from "./components/Output";
 
 // functions handling the conditionals
 
@@ -25,6 +27,8 @@ function App() {
   return (
     <div class="container items-center">
       <Input />
+      <Check />
+      <Output />
     </div>
 
     // <div className="App">
