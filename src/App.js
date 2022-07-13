@@ -6,6 +6,7 @@ import Output from "./components/Output";
 
 // functions handling the conditionals
 
+//the state exists in the master app.js and is accessed by children
 function App() {
   const [thoughts, setThoughts] = useState([
     {
