@@ -26,10 +26,13 @@ function App() {
   ]);
 
   return (
-    <div class="container items-center">
-      <Input />
-      <Check />
-      <Output />
+    <div class="flex flex-col items-center border-black">
+      {/* {thoughts.map((thought) => {
+        return <Input thoughts={thoughts} setThoughts={setThoughts} />;
+      })} */}
+      <Input thoughts={thoughts} setThoughts={setThoughts} />
+      <Check thoughts={thoughts} setThoughts={setThoughts} />
+      <Output thoughts={thoughts} setThoughts={setThoughts} />
     </div>
 
     // <div className="App">
