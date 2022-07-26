@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
-import Check from "./components/Check";
 import Input from "./components/Input";
 import Output from "./components/Output";
 
@@ -12,63 +11,75 @@ function App() {
     {
       // condition based example
       content: "Update Ableton",
-      isCompleted: false,
+      isAllowed: false,
       timeBased: false,
       conditionBased: false,
+      id: 1,
     },
     {
       // time based example
       content: "Replace External Drive",
-      isCompleted: false,
+      isAllowed: true,
       timeBased: false,
       conditionBased: false,
+      id: 2,
     },
   ]);
 
+  const [input, setInput] = useState("");
+
+  const addThought = (newThought) => {
+    // left makes sure there is text, right removes excess spaces
+    if (!newThought.text || /^\s*$/.test(newThought.text)) {
+      return;
+    }
+
+    const newThoughts = [newThought, ...thoughts];
+
+    setThoughts(newThoughts);
+    console.log(newThought, ...thoughts);
+  };
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  });
+
+  const handleChange = (e) => {
+    setThoughts(e.target.value);
+  };
+
+  // This is passed onto the form after the return to prevent the page from reloading when submitted
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Creates and ID randomly within 10,000 or less range
+    addThought({
+      id: Math.floor(Math.random() * 10000),
+      text: input,
+    });
+
+    setInput("");
+  };
+
   return (
     <div class="flex flex-col items-center border-black">
-      {/* {thoughts.map((thought) => {
-        return <Input thoughts={thoughts} setThoughts={setThoughts} />;
-      })} */}
+      <form className="todo-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Add a thought"
+          value={input}
+          name="text"
+          className="todo-input"
+          onChange={handleChange}
+          ref={inputRef}
+        />
+        <button className="thought-button">Add Thought</button>
+      </form>
       <Input thoughts={thoughts} setThoughts={setThoughts} />
-      <Check thoughts={thoughts} setThoughts={setThoughts} />
       <Output thoughts={thoughts} setThoughts={setThoughts} />
     </div>
-
-    // <div className="App">
-    //   {/* main container that holds all */}
-    //   <div className="main-container">
-    //     {/* input container */}
-    //     <form className="todo-list">
-    //       <ul>
-    //         {thoughts.map((todo, i) => (
-    //           <div className="thoughts">
-    //             <div className="checkbox-time" />
-
-    //             <input type="text" value={thoughts.content} />
-    //           </div>
-    //         ))}
-    //       </ul>
-    //     </form>
-    //     <div className="input-container">
-    //       {/* text input */}
-    //       <div className="text-input"></div>
-    //       {/* conditional flags, check all that apply */}
-    //       <div className="conditional-flags"></div>
-    //     </div>
-
-    //     {/* Conditionals container */}
-    //     <div className="conditionals-container">
-    //       {/* system time container */}
-    //       <div className="system-date-time"></div>
-    //       {/* milestone container */}
-    //       <div className="milestone-container"></div>
-    //     </div>
-
-    //     {/* output container */}
-    //     <div className="output-container"></div>
-    //   </div>
-    // </div>
   );
 }
 
