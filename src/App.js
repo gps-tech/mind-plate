@@ -3,13 +3,9 @@ import "./App.css";
 import Input from "./components/Input";
 import Output from "./components/Output";
 
-// functions handling the conditionals
-
-//the state exists in the master app.js and is accessed by children
 function App() {
   const [thoughts, setThoughts] = useState([
     {
-      // condition based example
       content: "Update Ableton",
       isAllowed: false,
       timeBased: false,
@@ -17,7 +13,6 @@ function App() {
       id: 1,
     },
     {
-      // time based example
       content: "Replace External Drive",
       isAllowed: true,
       timeBased: false,
@@ -33,9 +28,7 @@ function App() {
     if (!newThought.text || /^\s*$/.test(newThought.text)) {
       return;
     }
-
     const newThoughts = [newThought, ...thoughts];
-
     setThoughts(newThoughts);
     console.log(newThought, ...thoughts);
   };
@@ -47,24 +40,24 @@ function App() {
   });
 
   const handleChange = (e) => {
-    setThoughts(e.target.value);
+    setInput(e.target.value);
   };
 
   // This is passed onto the form after the return to prevent the page from reloading when submitted
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Creates and ID randomly within 10,000 or less range
     addThought({
-      id: Math.floor(Math.random() * 10000),
       text: input,
+      isAllowed: true,
+      timeBased: false,
+      conditionBased: false,
+      id: Math.floor(Math.random() * 10000),
     });
-
     setInput("");
   };
 
   return (
-    <div class="flex flex-col items-center border-black">
+    <div className="flex flex-col items-center border-black">
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
           type="text"

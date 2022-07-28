@@ -10,17 +10,21 @@ function Input(props) {
   };
 
   return (
-    <div class="border-black">
-      <h1 className="text-3xl font-bold underline">Inputt</h1>
-      <form className="todo-form" onSubmit={handleSubmit}>
-        <ul>
-          {props.thoughts.map((thought, i) => (
-            <div className="thought">{thought.content}</div>
-          ))}
-        </ul>
-      </form>
-      <Flag />
-      <Check thoughts={props.thoughts} setThoughts={props.setThoughts} />
+    <div>
+      <div>
+        <h1 className="text-3xl font-bold">Inputt</h1>
+        <form className="todo-form" onSubmit={handleSubmit}>
+          <ul>
+            {props.thoughts.map((thought, i) => (
+              <div key={thought.id} className="thought">
+                {thought.content}
+              </div>
+            ))}
+          </ul>
+        </form>
+        <Flag />
+        <Check thoughts={props.thoughts} setThoughts={props.setThoughts} />
+      </div>
     </div>
   );
 }
