@@ -1,6 +1,5 @@
 import React from "react";
 import Check from "./Check";
-import Flag from "./Flag";
 
 //This is the first container in terms of path.
 
@@ -12,7 +11,7 @@ function Input(props) {
   return (
     <div>
       <div>
-        <h1 className="text-3xl font-bold">Inputt</h1>
+        <h1 className="text-3xl font-bold underline border-black">Inputt</h1>
         <form className="todo-form" onSubmit={handleSubmit}>
           <ul>
             {props.thoughts.map((thought, i) => (
@@ -22,7 +21,6 @@ function Input(props) {
             ))}
           </ul>
         </form>
-        <Flag />
         <Check thoughts={props.thoughts} setThoughts={props.setThoughts} />
       </div>
     </div>

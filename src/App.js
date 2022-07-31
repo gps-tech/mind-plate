@@ -11,6 +11,7 @@ function App() {
       timeBased: false,
       conditionBased: false,
       id: 1,
+      dependencies: [],
     },
     {
       content: "Replace External Drive",
@@ -18,6 +19,7 @@ function App() {
       timeBased: false,
       conditionBased: false,
       id: 2,
+      dependencies: [],
     },
   ]);
 
@@ -25,12 +27,12 @@ function App() {
 
   const addThought = (newThought) => {
     // left makes sure there is text, right removes excess spaces
-    if (!newThought.text || /^\s*$/.test(newThought.text)) {
+    if (!newThought.content || /^\s*$/.test(newThought.content)) {
       return;
     }
     const newThoughts = [newThought, ...thoughts];
     setThoughts(newThoughts);
-    console.log(newThought, ...thoughts);
+    console.log(newThoughts);
   };
 
   const inputRef = useRef(null);
@@ -47,17 +49,18 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addThought({
-      text: input,
+      content: input,
       isAllowed: true,
       timeBased: false,
       conditionBased: false,
       id: Math.floor(Math.random() * 10000),
+      dependencies: [],
     });
     setInput("");
   };
 
   return (
-    <div className="flex flex-col items-center border-black">
+    <div className="flex flex-col space-y-8 px-10 mx-10 text-left place-content-center border-black">
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
           type="text"
