@@ -1,7 +1,5 @@
 import React from "react";
 
-// this gets updated depending on time passing, or a condition being checked off
-
 const checkClear = ({ content, isAllowed }) => {
   if (isAllowed) {
     return <div className="thought">{content}</div>;

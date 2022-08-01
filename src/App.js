@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
-import Input from "./components/Input";
+import Conditions from "./components/Conditions";
 import Output from "./components/Output";
 
 function App() {
@@ -61,6 +61,7 @@ function App() {
 
   return (
     <div className="flex flex-col space-y-8 px-10 mx-10 text-left place-content-center border-black">
+      <h1 className="text-3xl font-bold underline">Thoughts</h1>
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -73,7 +74,8 @@ function App() {
         />
         <button className="thought-button">Add Thought</button>
       </form>
-      <Input thoughts={thoughts} setThoughts={setThoughts} />
+
+      <Conditions thoughts={thoughts} setThoughts={setThoughts} />
       <Output thoughts={thoughts} setThoughts={setThoughts} />
     </div>
   );

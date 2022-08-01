@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
-function Check() {
-  const [todos, setTodos] = useState([]);
+function Check(props) {
+  const { todos, setTodos } = props;
 
   const addTodo = (todo) => {
     // left makes sure there is text, right removes excess spaces
@@ -14,7 +14,7 @@ function Check() {
     const newTodos = [todo, ...todos];
 
     setTodos(newTodos);
-    console.log(todo, ...todos);
+    // console.log(todo, ...todos);
   };
 
   const updateTodo = (todoID, newValue) => {
@@ -47,12 +47,12 @@ function Check() {
     <div>
       <h1 className="text-3xl font-bold underline">Conditions</h1>
       <TodoForm onSubmit={addTodo} />
-      <Todo
+      {/* <Todo
         todos={todos}
         completeTodo={completeTodo}
         removeTodo={removeTodo}
         updateTodo={updateTodo}
-      />
+      /> */}
     </div>
   );
 }
