@@ -17,8 +17,9 @@ function Conditions(props) {
     },
   ]);
 
+  // modify so that it pushes checked items to array into corresponding thought object state in App.js
   const handleClick = (i) => {
-    setTodos((todos[i].done = true));
+    setTodos(...todos, (todos[i].done = true));
   };
 
   const handleSubmit = (e) => {
@@ -28,7 +29,10 @@ function Conditions(props) {
   return (
     <div>
       <div>
-        <h1 className="text-3xl font-bold underline border-black">
+        <h1
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-20"
+          for="grid-first-name"
+        >
           Conditions for thoughts
         </h1>
         <form className="todo-form" onSubmit={handleSubmit}>
@@ -36,12 +40,20 @@ function Conditions(props) {
             {props.thoughts.map((thought, i) => (
               <div key={thought.id} className="thought">
                 {thought.content}
-                {todos.map((todo, i) => (
-                  <div key={todo.id} className="todo">
-                    <input type="checkbox" onClick={handleClick} />
-                    {todo.text}
-                  </div>
-                ))}
+
+                {/* create collapsable toggle for all the conditions here */}
+                <div id="condition toggle">
+                  {todos.map((todo, i) => (
+                    <div key={todo.id} className="flex">
+                      <input
+                        type="checkbox"
+                        className="mt-1.5"
+                        onClick={handleClick}
+                      />
+                      <div className="pl-2.5">{todo.text}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </ul>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Todo from "./Todo";
-import TodoForm from "./TodoForm";
+import ConditionForm from "./ConditionForm";
 
 function Check(props) {
   const { todos, setTodos } = props;
@@ -44,9 +44,14 @@ function Check(props) {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Conditions</h1>
-      <TodoForm onSubmit={addTodo} />
+    <div className="border-black">
+      <h1
+        className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-20"
+        for="grid-first-name"
+      >
+        Conditions
+      </h1>
+      <ConditionForm onSubmit={addTodo} />
       {/* <Todo
         todos={todos}
         completeTodo={completeTodo}

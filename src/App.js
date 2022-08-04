@@ -60,8 +60,10 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col space-y-8 px-10 mx-10 text-left place-content-center border-black">
-      <h1 className="text-3xl font-bold underline">Thoughts</h1>
+    <div className="max-w-sm m-auto">
+      <h1 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-20">
+        Thoughts
+      </h1>
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -72,7 +74,9 @@ function App() {
           onChange={handleChange}
           ref={inputRef}
         />
-        <button className="thought-button">Add Thought</button>
+        <button className="flex-shrink-0 ml-2 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
+          Add Thought
+        </button>
       </form>
 
       <Conditions thoughts={thoughts} setThoughts={setThoughts} />

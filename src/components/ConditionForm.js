@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function TodoForm(props) {
+function ConditionForm(props) {
   const [input, setInput] = useState(props.edit ? props.edit.value : "");
 
   const inputRef = useRef(null);
@@ -52,11 +52,13 @@ function TodoForm(props) {
             onChange={handleChange}
             ref={inputRef}
           />
-          <button className="todo-button">Add todo</button>
+          <button className="flex-shrink-0 ml-2 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
+            Add condition
+          </button>
         </>
       )}
     </form>
   );
 }
 
-export default TodoForm;
+export default ConditionForm;
