@@ -3,6 +3,8 @@ import "./App.css";
 import Conditions from "./components/Conditions";
 import Output from "./components/Output";
 
+//change to two states, see notes
+
 function App() {
   const [thoughts, setThoughts] = useState([
     {
@@ -50,7 +52,7 @@ function App() {
     e.preventDefault();
     addThought({
       content: input,
-      isAllowed: true,
+      isAllowed: false,
       timeBased: false,
       conditionBased: false,
       id: Math.floor(Math.random() * 10000),

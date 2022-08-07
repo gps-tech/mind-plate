@@ -4,6 +4,8 @@ import Check from "./Check";
 //This is the first container in terms of path.
 
 function Conditions(props) {
+  const { thoughts, setThoughts } = props;
+
   const [todos, setTodos] = useState([
     {
       text: "Plugins compatible",
@@ -18,8 +20,8 @@ function Conditions(props) {
   ]);
 
   // modify so that it pushes checked items to array into corresponding thought object state in App.js
-  const handleClick = (i) => {
-    setTodos(...todos, (todos[i].done = true));
+  const handleClick = (index, i) => {
+    setThoughts(thoughts[i].dependencies.push(todos[index]));
   };
 
   const handleSubmit = (e) => {
@@ -43,12 +45,12 @@ function Conditions(props) {
 
                 {/* create collapsable toggle for all the conditions here */}
                 <div id="condition toggle">
-                  {todos.map((todo, i) => (
+                  {todos.map((todo, index) => (
                     <div key={todo.id} className="flex">
                       <input
                         type="checkbox"
                         className="mt-1.5"
-                        onClick={handleClick}
+                        onClick={handleClick(index, i)}
                       />
                       <div className="pl-2.5">{todo.text}</div>
                     </div>

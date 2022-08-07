@@ -1,7 +1,7 @@
 import React from "react";
 
-const checkClear = ({ content, isAllowed }) => {
-  if (isAllowed) {
+const checkClear = ({ content, dependencies }) => {
+  if (dependencies.length === 0) {
     return <div className="thought">{content}</div>;
   }
 };
