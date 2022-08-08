@@ -9,10 +9,7 @@ const checkClear = ({ content, dependencies }) => {
 function Output(props) {
   return (
     <div>
-      <h1
-        className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-        for="grid-first-name"
-      >
+      <h1 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
         Output
       </h1>
       <ul>

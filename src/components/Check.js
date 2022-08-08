@@ -45,10 +45,7 @@ function Check(props) {
 
   return (
     <div className="border-black">
-      <h1
-        className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-20"
-        for="grid-first-name"
-      >
+      <h1 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-20">
         Conditions
       </h1>
       <ConditionForm onSubmit={addTodo} />
